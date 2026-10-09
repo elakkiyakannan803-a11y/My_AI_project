@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode (default when .dark is NOT on html) */
+    --navy-50:  #f8fafc;
+    --navy-100: #f1f5f9;
+    --navy-200: #e2e8f0;
+    --navy-300: #64748b;
+    --navy-400: #475569;
+    --navy-500: #334155;
+    --navy-600: #cbd5e1;
+    --navy-700: #f1f5f9;
+    --navy-800: #ffffff;
+    --navy-900: #f8fafc;
+    --navy-950: #f1f5f9;
+
+    --accent-50:  #ecfeff;
+    --accent-100: #cffafe;
+    --accent-200: #a5f3fc;
+    --accent-300: #67e8f9;
+    --accent-400: #0891b2;
+    --accent-500: #06b6d4;
+    --accent-600: #0891b2;
+    --accent-700: #0e7490;
+    --accent-800: #155e75;
+    --accent-900: #164e63;
+  }
+
+  .dark {
+    /* Dark mode */
+    --navy-50:  #eef2f8;
+    --navy-100: #d5ddee;
+    --navy-200: #a9b9dd;
+    --navy-300: #6e88c4;
+    --navy-400: #415ba0;
+    --navy-500: #2a3f7a;
+    --navy-600: #1e2f5c;
+    --navy-700: #152142;
+    --navy-800: #0f1729;
+    --navy-900: #0a0f1c;
+    --navy-950: #05080f;
+
+    --accent-50:  #ecfeff;
+    --accent-100: #cffafe;
+    --accent-200: #a5f3fc;
+    --accent-300: #67e8f9;
+    --accent-400: #22d3ee;
+    --accent-500: #06b6d4;
+    --accent-600: #0891b2;
+    --accent-700: #0e7490;
+    --accent-800: #155e75;
+    --accent-900: #164e63;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply font-sans;
+  }
+}
+
+/* Light mode: text-white should render as dark text on light backgrounds */
+:root .text-white {
+  color: #0f172a !important;
+}
+:root .text-navy-200 {
+  color: #334155 !important;
+}
+:root .text-navy-300 {
+  color: #475569 !important;
+}
+:root .text-navy-100 {
+  color: #1e293b !important;
+}
+:root .text-navy-400 {
+  color: #64748b !important;
+}
+:root .hover\:text-white:hover {
+  color: #0f172a !important;
+}
+:root .border-navy-900 {
+  border-color: #0f172a !important;
+}
+
+/* Dark mode: text-white renders as actual white */
+.dark .text-white {
+  color: #ffffff !important;
+}
+.dark .text-navy-200 {
+  color: #a9b9dd !important;
+}
+.dark .text-navy-300 {
+  color: #6e88c4 !important;
+}
+.dark .text-navy-100 {
+  color: #d5ddee !important;
+}
+.dark .text-navy-400 {
+  color: #415ba0 !important;
+}
+.dark .hover\:text-white:hover {
+  color: #ffffff !important;
+}
+.dark .border-navy-900 {
+  border-color: #0a0f1c !important;
+}
+
+/* Dark mode input readability: black text on light input backgrounds, visible cursor */
+.dark input,
+.dark textarea,
+.dark select {
+  color: #000000 !important;
+  background-color: #f1f5f9 !important;
+  caret-color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #64748b !important;
+}
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  caret-color: #000000 !important;
+}
+/* Prevent browser autofill from overriding dark-mode colors */
+.dark input:-webkit-autofill,
+.dark textarea:-webkit-autofill,
+.dark select:-webkit-autofill {
+  -webkit-text-fill-color: #000000 !important;
+  -webkit-box-shadow: 0 0 0 1000px #f1f5f9 inset !important;
+  caret-color: #000000 !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+/* Ensure option dropdown text is readable in dark mode */
+.dark select option {
+  background-color: #f1f5f9 !important;
+  color: #000000 !important;
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--navy-300) 30%, transparent);
+    border-radius: 9999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--navy-300) 50%, transparent);
+    border-radius: 9999px;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Typing indicator dots */
+.typing-dot {
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}

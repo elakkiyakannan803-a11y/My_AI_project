@@ -1,0 +1,8 @@
+[functions.secure-signup]
+verify_jwt = false
+
+[functions.resend-verification]
+verify_jwt = false
+
+[functions.submit-application]
+verify_jwt = true
